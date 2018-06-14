@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,10 +14,12 @@ namespace WindowsFormsApplication1
         HtmlElement currentElement;
         HtmlElement previousElement;
         HtmlDocument thisdoc;
+        private string highlightColor = "rgb(255, 255, 204)";
         private string previousStyle = "";
 
         public Form1()
         {
+            //var color = Color.FromArgb();
             InitializeComponent();
             webBrowser1.AllowNavigation = false;  
         }
@@ -52,7 +55,7 @@ namespace WindowsFormsApplication1
             HtmlElement currentElement = webBrowser1.Document.GetElementFromPoint(e.ClientMousePosition);
 
             string elementStyle = currentElement.Style;
-            currentElement.Style = elementStyle + "; background-color: #ffc;";
+            currentElement.Style = elementStyle + $"; background-color: {highlightColor};";
 
             currentElement = webBrowser1.Document.GetElementFromPoint(e.ClientMousePosition);
             string elementHtml = currentElement.OuterHtml;
@@ -84,13 +87,11 @@ namespace WindowsFormsApplication1
 
             var dom = htmlDocument.DocumentNode.Descendants().First().Name; 
             var element = htmlDocument.DocumentNode.Descendants().First().Attributes.ToList();
-            var elementName = "";
-            var value = "";
 
             foreach ( var elem in element )
             {
-                elementName = elem.Name;
-                value = elem.Value;
+                var elementName = elem.Name;
+                var value = elem.Value;
                 string output = $"//{dom}[@{elementName}='{value}']";
                 outputList.Add(output);
             }
@@ -129,7 +130,7 @@ namespace WindowsFormsApplication1
                         try
                         {
                             var style = node.Attributes["Style"].Value;
-                            if ( style.Contains( "rgb(255, 255, 204)" ) && !output.Contains("rgb(255, 255, 204)"))
+                            if ( style.Contains( highlightColor ) && !output.Contains(highlightColor))
                             {
                                 actualOutput.Add("find_elements_by_xpath(\"" + output + "\")[" + count + "]");
                             }  
