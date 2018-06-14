@@ -62,7 +62,7 @@ namespace WindowsFormsApplication1
 
             var fullDocumentHtml = webBrowser1.Document.Body.OuterHtml;
 
-            List<string> processedHtml = processHtml(elementHtml);
+            List<string[]> processedHtml = processHtml(elementHtml);
             List<string> htmlStrings = checkHtml(fullDocumentHtml, processedHtml, currentElement);
 
             if (htmlStrings.Count > 0)
@@ -79,9 +79,9 @@ namespace WindowsFormsApplication1
             previousStyle = elementStyle;
         }
 
-        private List<string> processHtml(string html)
+        private List<string[]> processHtml(string html)
         {
-            List<string> outputList = new List<string>();
+            List<string[]> outputList = new List<string[]>();
             HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
             htmlDocument.LoadHtml(html);
 
@@ -93,19 +93,20 @@ namespace WindowsFormsApplication1
                 var elementName = elem.Name;
                 var value = elem.Value;
                 string output = $"//{dom}[@{elementName}='{value}']";
-                outputList.Add(output);
+                string[] outputString = { dom, elementName, value};
+                outputList.Add(outputString);
             }
 
             string text = htmlDocument.DocumentNode.Descendants().First().InnerText;
             if ( !String.IsNullOrEmpty(text) )
             {
-                string domOutput = $"//{dom}[text()='{text}']";
+                string[] domOutput = { dom, text};
                 outputList.Add( domOutput );
             }
             return outputList;
         }
 
-        private List<string> checkHtml(string html, List<string> outputList, HtmlElement element)
+        private List<string> checkHtml(string html, List<string[]> outputList, HtmlElement element)
         {
             List<string> actualOutput = new List<string>();
             foreach ( var output in outputList)
@@ -113,10 +114,21 @@ namespace WindowsFormsApplication1
                 HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
                 htmlDocument.LoadHtml(html);
 
+                string fullOutput;
+
+                if ( output.Length == 3 )
+                { 
+                    fullOutput = $"//{output[0]}[@{output[1]}='{output[2]}']";
+                }
+                else
+                {
+                    fullOutput = $"//{output[0]}[text()='{output[1]}']";
+                }
+
                 HtmlNodeCollection nodes = null;
                 try
                 {
-                    nodes = htmlDocument.DocumentNode.SelectNodes( output );
+                    nodes = htmlDocument.DocumentNode.SelectNodes(fullOutput);
                 }
                 catch
                 {
@@ -130,9 +142,20 @@ namespace WindowsFormsApplication1
                         try
                         {
                             var style = node.Attributes["Style"].Value;
-                            if ( style.Contains( highlightColor ) && !output.Contains(highlightColor))
+                            if ( style.Contains( highlightColor ) && !fullOutput.Contains(highlightColor))
                             {
-                                actualOutput.Add("find_elements_by_xpath(\"" + output + "\")[" + count + "]");
+                                if ( output[1] == "class" )
+                                {
+                                    actualOutput.Add(
+                                        "find_elements_by_class_name(\"" + output[2] + "\")[" +
+                                        count + "]" );
+                                }
+                                else
+                                {
+                                    actualOutput.Add(
+                                        "find_elements_by_xpath(\"" + fullOutput + "\")[" + count +
+                                        "]" );
+                                }
                             }  
                         }
                         catch
