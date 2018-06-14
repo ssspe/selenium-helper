@@ -1,0 +1,24 @@
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HtmlAgilityPack.dll
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HtmlAgilityPack.pdb
+c:\users\spencer.robertson\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
