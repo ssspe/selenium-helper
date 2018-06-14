@@ -144,18 +144,35 @@ namespace WindowsFormsApplication1
                             var style = node.Attributes["Style"].Value;
                             if ( style.Contains( highlightColor ) && !fullOutput.Contains(highlightColor))
                             {
-                                if ( output[1] == "class" )
+                                if ( count == 0 )
                                 {
-                                    actualOutput.Add(
-                                        "find_elements_by_class_name(\"" + output[2] + "\")[" +
-                                        count + "]" );
+                                    if ( output[1] == "class" )
+                                    {
+                                        actualOutput.Add(
+                                            "find_element_by_class_name(\"" + output[2] + "\")" );
+                                    }
+                                    else
+                                    {
+                                        actualOutput.Add(
+                                            "find_element_by_xpath(\"" + fullOutput + "\")" );
+                                    }
                                 }
                                 else
                                 {
-                                    actualOutput.Add(
-                                        "find_elements_by_xpath(\"" + fullOutput + "\")[" + count +
-                                        "]" );
+                                    if (output[1] == "class")
+                                    {
+                                        actualOutput.Add(
+                                            "find_elements_by_class_name(\"" + output[2] + "\")[" +
+                                            count + "]");
+                                    }
+                                    else
+                                    {
+                                        actualOutput.Add(
+                                            "find_elements_by_xpath(\"" + fullOutput + "\")[" + count +
+                                            "]");
+                                    }
                                 }
+                                
                             }  
                         }
                         catch
