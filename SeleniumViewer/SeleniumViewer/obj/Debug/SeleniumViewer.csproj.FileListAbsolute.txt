@@ -1,0 +1,12 @@
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\SeleniumViewer.csprojResolveAssemblyReference.cache
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\SeleniumViewer.csproj.GenerateResource.Cache
