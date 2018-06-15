@@ -32,6 +32,7 @@
             this.navigateButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.seleniumStrings = new System.Windows.Forms.ComboBox();
+            this.languageSelection = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -68,14 +69,23 @@
             this.seleniumStrings.FormattingEnabled = true;
             this.seleniumStrings.Location = new System.Drawing.Point(13, 525);
             this.seleniumStrings.Name = "seleniumStrings";
-            this.seleniumStrings.Size = new System.Drawing.Size(717, 21);
+            this.seleniumStrings.Size = new System.Drawing.Size(545, 21);
             this.seleniumStrings.TabIndex = 3;
+            // 
+            // languageSelection
+            // 
+            this.languageSelection.FormattingEnabled = true;
+            this.languageSelection.Location = new System.Drawing.Point(573, 525);
+            this.languageSelection.Name = "languageSelection";
+            this.languageSelection.Size = new System.Drawing.Size(157, 21);
+            this.languageSelection.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 556);
+            this.Controls.Add(this.languageSelection);
             this.Controls.Add(this.seleniumStrings);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.navigateButton);
@@ -93,6 +103,7 @@
         private System.Windows.Forms.Button navigateButton;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox seleniumStrings;
+        private System.Windows.Forms.ComboBox languageSelection;
     }
 }
 
