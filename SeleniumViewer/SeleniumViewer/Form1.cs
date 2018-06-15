@@ -16,12 +16,15 @@ namespace WindowsFormsApplication1
         HtmlDocument thisdoc;
         private string highlightColor = "rgb(255, 255, 204)";
         private string previousStyle = "";
+        private string[] languages = { "Python", "Java" };
 
         public Form1()
         {
             //var color = Color.FromArgb();
             InitializeComponent();
-            webBrowser1.AllowNavigation = false;  
+            webBrowser1.AllowNavigation = false;
+            languageSelection.Text = "Select a language";
+            languageSelection.Items.AddRange( languages );
         }
 
         private void navigateButton_Click(object sender, EventArgs e)
@@ -142,38 +145,66 @@ namespace WindowsFormsApplication1
                         try
                         {
                             var style = node.Attributes["Style"].Value;
-                            if ( style.Contains( highlightColor ) && !fullOutput.Contains(highlightColor))
+                            if ( languageSelection.Text == "Python" )
                             {
-                                if ( count == 0 )
+                                if ( style.Contains( highlightColor ) &&
+                                     !fullOutput.Contains( highlightColor ) )
                                 {
-                                    if ( output[1] == "class" )
+                                    if ( count == 0 )
                                     {
-                                        actualOutput.Add(
-                                            "find_element_by_class_name(\"" + output[2] + "\")" );
+                                        if ( output[1] == "class" )
+                                        {
+                                            actualOutput.Add(
+                                                "find_element_by_class_name(\"" + output[2] +
+                                                "\")" );
+                                        }
+                                        else
+                                        {
+                                            actualOutput.Add(
+                                                "find_element_by_xpath(\"" + fullOutput + "\")" );
+                                        }
                                     }
                                     else
                                     {
-                                        actualOutput.Add(
-                                            "find_element_by_xpath(\"" + fullOutput + "\")" );
+                                        if ( output[1] == "class" )
+                                        {
+                                            actualOutput.Add(
+                                                "find_elements_by_class_name(\"" + output[2] +
+                                                "\")[" +
+                                                count + "]" );
+                                        }
+                                        else
+                                        {
+                                            actualOutput.Add(
+                                                "find_elements_by_xpath(\"" + fullOutput + "\")[" +
+                                                count +
+                                                "]" );
+                                        }
                                     }
+
                                 }
-                                else
+                            }
+
+                            if (languageSelection.Text == "Java")
+                            {
+                                if (style.Contains(highlightColor) &&
+                                     !fullOutput.Contains(highlightColor))
                                 {
-                                    if (output[1] == "class")
+                                    if (count == 0)
                                     {
                                         actualOutput.Add(
-                                            "find_elements_by_class_name(\"" + output[2] + "\")[" +
-                                            count + "]");
+                                            "findElement(By.xpath(\"" + fullOutput + "\")");
                                     }
                                     else
                                     {
                                         actualOutput.Add(
-                                            "find_elements_by_xpath(\"" + fullOutput + "\")[" + count +
+                                            "findElements(By.xpath(\"" + fullOutput + "\")[" +
+                                            count +
                                             "]");
                                     }
+
                                 }
-                                
-                            }  
+                            }
                         }
                         catch
                         {
