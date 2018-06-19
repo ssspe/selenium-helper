@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 using HtmlAgilityPack;
@@ -14,16 +15,17 @@ namespace WindowsFormsApplication1
         HtmlElement currentElement;
         HtmlElement previousElement;
         HtmlDocument thisdoc;
-        private string highlightColor = "rgb(255, 255, 204)";
+        private string highlightColor = "rgb(255,255,204)";
         private string previousStyle = "";
         private string[] languages = { "Python", "Java" };
-
+        private List<string[]> processedHtml;
+        private List<string> htmlStrings;
+        private string fullDocumentHtml;
         public Form1()
         {
             //var color = Color.FromArgb();
             InitializeComponent();
             webBrowser1.AllowNavigation = false;
-            languageSelection.Text = "Select a language";
             languageSelection.Items.AddRange( languages );
         }
 
@@ -31,6 +33,7 @@ namespace WindowsFormsApplication1
         {
             webBrowser1.AllowNavigation = true;
             string val = textBox1.Text;
+            //Uri val = new Uri( "file:///C:\\Users\\Spencer.Robertson\\Desktop\\test.html" );  
             webBrowser1.Navigate( val );
         }
 
@@ -51,7 +54,16 @@ namespace WindowsFormsApplication1
 
         private void SelectDoc(object sender, HtmlElementEventArgs e)
         {
+            processedHtml = null;
+            htmlStrings = null;
+            fullDocumentHtml = null;
+            if (previousElement != null)
+            {
+                previousElement.Style = previousStyle;
+            }
+
             seleniumStrings.Items.Clear();
+            seleniumStrings.Text = "";
 
             webBrowser1.AllowNavigation = false;
             
@@ -63,21 +75,20 @@ namespace WindowsFormsApplication1
             currentElement = webBrowser1.Document.GetElementFromPoint(e.ClientMousePosition);
             string elementHtml = currentElement.OuterHtml;
 
-            var fullDocumentHtml = webBrowser1.Document.Body.OuterHtml;
+            fullDocumentHtml = webBrowser1.Document.Body.OuterHtml;
+            processedHtml = processHtml(elementHtml);
 
-            List<string[]> processedHtml = processHtml(elementHtml);
-            List<string> htmlStrings = checkHtml(fullDocumentHtml, processedHtml, currentElement);
-
-            if (htmlStrings.Count > 0)
+            if ( languageSelection.Text != "Select a language" )
             {
-                seleniumStrings.Text = htmlStrings.First();
-                seleniumStrings.Items.AddRange(htmlStrings.Skip(1).ToArray());
+                htmlStrings = checkHtml( fullDocumentHtml, processedHtml, currentElement );
+
+                if ( htmlStrings.Count > 0 )
+                {
+                    seleniumStrings.Text = htmlStrings.First();
+                    seleniumStrings.Items.AddRange( htmlStrings.Skip( 1 ).ToArray() );
+                }
             }
 
-            if (previousElement != null)
-            {
-                previousElement.Style = previousStyle;
-            }
             previousElement = currentElement;
             previousStyle = elementStyle;
         }
@@ -95,7 +106,6 @@ namespace WindowsFormsApplication1
             {
                 var elementName = elem.Name;
                 var value = elem.Value;
-                string output = $"//{dom}[@{elementName}='{value}']";
                 string[] outputString = { dom, elementName, value};
                 outputList.Add(outputString);
             }
@@ -125,8 +135,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    fullOutput = $"//{output[0]}[text()='{output[1]}']";
-                }
+                    fullOutput = $"//{output[0]}[text()='{output[1]}']";                }
 
                 HtmlNodeCollection nodes = null;
                 try
@@ -144,7 +153,7 @@ namespace WindowsFormsApplication1
                     {
                         try
                         {
-                            var style = node.Attributes["Style"].Value;
+                            var style = node.Attributes["Style"].Value.Replace( " ", "" );
                             if ( languageSelection.Text == "Python" )
                             {
                                 if ( style.Contains( highlightColor ) &&
@@ -228,5 +237,29 @@ namespace WindowsFormsApplication1
                 navigateButton_Click(this, new EventArgs());
             }
         }
+
+        private void languageSelection_TextChanged_1(object sender, EventArgs e)
+        {
+            seleniumStrings.Items.Clear();
+            seleniumStrings.Text = "";
+            if (languageSelection.Text != "Select a language")
+            {
+                try
+                {
+                    htmlStrings = checkHtml( fullDocumentHtml, processedHtml, currentElement );
+
+                    if ( htmlStrings.Count > 0 )
+                    {
+                        seleniumStrings.Text = htmlStrings.First();
+                        seleniumStrings.Items.AddRange( htmlStrings.Skip( 1 ).ToArray() );
+                    }
+                }
+                catch
+                {
+                    //nothing
+                }
+            }
+        }
+
     }
 }
