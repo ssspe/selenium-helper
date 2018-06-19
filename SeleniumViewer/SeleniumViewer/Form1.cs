@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 using HtmlAgilityPack;
+using Transitions;
 using HtmlDocument = System.Windows.Forms.HtmlDocument;
 
 namespace WindowsFormsApplication1
@@ -262,5 +263,58 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private int count = 0;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if ( count == 0 )
+            {
+                Console.Write( "BUTTON CLICKED" );
+                var t = new Transition( new TransitionType_EaseInEaseOut( 500 ) );
+                t.add( seleniumStrings, "Left", -1000 );
+                t.add( seleniumStrings, "Top", seleniumStrings.Top );
+
+                t.add( languageSelection, "Left", -1000 );
+                t.add( languageSelection, "Top", languageSelection.Top );
+
+                t.add( navigateButton, "Left", -1000 );
+                t.add( navigateButton, "Top", navigateButton.Top );
+
+                t.add( textBox1, "Left", -1000 );
+                t.add( textBox1, "Top", textBox1.Top );
+
+                t.add( webBrowser1, "Left", -1000 );
+                t.add( webBrowser1, "Top", webBrowser1.Top );
+
+                t.add( button1, "Left", navigateButton.Left );
+                t.add( button1, "Top", button1.Top );
+                t.run();
+                count = 1;
+            }
+            else
+            {
+                var t = new Transition(new TransitionType_EaseInEaseOut(500));
+                t.add(seleniumStrings, "Left", 13);
+                t.add(seleniumStrings, "Top", seleniumStrings.Top);
+
+                t.add(languageSelection, "Left", 573);
+                t.add(languageSelection, "Top", languageSelection.Top);
+
+                t.add(navigateButton, "Left", 12);
+                t.add(navigateButton, "Top", navigateButton.Top);
+
+                t.add(textBox1, "Left", 94);
+                t.add(textBox1, "Top", textBox1.Top);
+
+                t.add(webBrowser1, "Left", 12);
+                t.add(webBrowser1, "Top", webBrowser1.Top);
+
+                t.add(button1, "Left", 655);
+                t.add(button1, "Top", button1.Top);
+                t.run();
+                count = 0;
+            }
+            
+        }
     }
 }

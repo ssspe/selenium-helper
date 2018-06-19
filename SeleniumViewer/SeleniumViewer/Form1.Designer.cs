@@ -33,6 +33,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.seleniumStrings = new System.Windows.Forms.ComboBox();
             this.languageSelection = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -60,7 +61,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(94, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(636, 20);
+            this.textBox1.Size = new System.Drawing.Size(524, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -81,11 +82,22 @@
             this.languageSelection.TabIndex = 4;
             this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(655, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 556);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.languageSelection);
             this.Controls.Add(this.seleniumStrings);
             this.Controls.Add(this.textBox1);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox seleniumStrings;
         private System.Windows.Forms.ComboBox languageSelection;
+        private System.Windows.Forms.Button button1;
     }
 }
 

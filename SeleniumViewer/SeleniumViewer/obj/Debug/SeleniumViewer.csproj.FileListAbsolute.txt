@@ -10,3 +10,5 @@ C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\Sel
 C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\SeleniumViewer.csproj.GenerateResource.Cache
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\Transitions.dll
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\Transitions.pdb
