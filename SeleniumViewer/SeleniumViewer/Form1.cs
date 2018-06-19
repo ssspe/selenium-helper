@@ -58,10 +58,10 @@ namespace WindowsFormsApplication1
             processedHtml = null;
             htmlStrings = null;
             fullDocumentHtml = null;
-            //if (previousElement != null)
-            //{
-            //    previousElement.Style = previousStyle;
-            //}
+            if (previousElement != null)
+            {
+                previousElement.Style = previousStyle;
+            }
 
             webBrowser1.AllowNavigation = false;
             
@@ -267,54 +267,59 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Dictionary<string, int> defaultPositions = new Dictionary<string, int>()
+            {
+                {"seleniumStrings", 13},
+                {"languageSelection", 573},
+                {"navigateButton", 12},
+                {"textBox1", 94},
+                {"webBrowser1", 12},
+                {"button1", 655 }
+            };
+
+            Dictionary<string, int> secondaryPositions = new Dictionary<string, int>()
+            {
+                {"seleniumStrings", -seleniumStrings.Width - 13},
+                {"languageSelection", -languageSelection.Width - 573},
+                {"navigateButton", -navigateButton.Width - 12},
+                {"textBox1", -textBox1.Width - 194},
+                {"webBrowser1", -webBrowser1.Width - 12},
+                {"button1", navigateButton.Left }
+            };
+
             if ( count == 0 )
             {
-                Console.Write( "BUTTON CLICKED" );
-                var t = new Transition( new TransitionType_EaseInEaseOut( 500 ) );
-                t.add( seleniumStrings, "Left", -1000 );
-                t.add( seleniumStrings, "Top", seleniumStrings.Top );
-
-                t.add( languageSelection, "Left", -1000 );
-                t.add( languageSelection, "Top", languageSelection.Top );
-
-                t.add( navigateButton, "Left", -1000 );
-                t.add( navigateButton, "Top", navigateButton.Top );
-
-                t.add( textBox1, "Left", -1000 );
-                t.add( textBox1, "Top", textBox1.Top );
-
-                t.add( webBrowser1, "Left", -1000 );
-                t.add( webBrowser1, "Top", webBrowser1.Top );
-
-                t.add( button1, "Left", navigateButton.Left );
-                t.add( button1, "Top", button1.Top );
-                t.run();
+                transitionViews( secondaryPositions );
                 count = 1;
             }
             else
             {
-                var t = new Transition(new TransitionType_EaseInEaseOut(500));
-                t.add(seleniumStrings, "Left", 13);
-                t.add(seleniumStrings, "Top", seleniumStrings.Top);
-
-                t.add(languageSelection, "Left", 573);
-                t.add(languageSelection, "Top", languageSelection.Top);
-
-                t.add(navigateButton, "Left", 12);
-                t.add(navigateButton, "Top", navigateButton.Top);
-
-                t.add(textBox1, "Left", 94);
-                t.add(textBox1, "Top", textBox1.Top);
-
-                t.add(webBrowser1, "Left", 12);
-                t.add(webBrowser1, "Top", webBrowser1.Top);
-
-                t.add(button1, "Left", 655);
-                t.add(button1, "Top", button1.Top);
-                t.run();
+                transitionViews(defaultPositions);
                 count = 0;
             }
-            
+        }
+
+        private void transitionViews(Dictionary<string, int> positions)
+        {
+            var t = new Transition(new TransitionType_EaseInEaseOut(500));
+            t.add(seleniumStrings, "Left", positions["seleniumStrings"]);
+            t.add(seleniumStrings, "Top", seleniumStrings.Top);
+
+            t.add(languageSelection, "Left", positions["languageSelection"]);
+            t.add(languageSelection, "Top", languageSelection.Top);
+
+            t.add(navigateButton, "Left", positions["navigateButton"]);
+            t.add(navigateButton, "Top", navigateButton.Top);
+
+            t.add(textBox1, "Left", positions["textBox1"]);
+            t.add(textBox1, "Top", textBox1.Top);
+
+            t.add(webBrowser1, "Left", positions["webBrowser1"]);
+            t.add(webBrowser1, "Top", webBrowser1.Top);
+
+            t.add(button1, "Left", positions["button1"]);
+            t.add(button1, "Top", button1.Top);
+            t.run();
         }
     }
 }
