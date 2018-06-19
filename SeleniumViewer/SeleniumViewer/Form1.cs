@@ -57,13 +57,10 @@ namespace WindowsFormsApplication1
             processedHtml = null;
             htmlStrings = null;
             fullDocumentHtml = null;
-            if (previousElement != null)
-            {
-                previousElement.Style = previousStyle;
-            }
-
-            seleniumStrings.Items.Clear();
-            seleniumStrings.Text = "";
+            //if (previousElement != null)
+            //{
+            //    previousElement.Style = previousStyle;
+            //}
 
             webBrowser1.AllowNavigation = false;
             
@@ -121,6 +118,12 @@ namespace WindowsFormsApplication1
 
         private List<string> checkHtml(string html, List<string[]> outputList, HtmlElement element)
         {
+            seleniumStrings.Items.Clear();
+            seleniumStrings.Text = "";
+            if (previousElement != null)
+            {
+                previousElement.Style = previousStyle;
+            }
             List<string> actualOutput = new List<string>();
             foreach ( var output in outputList)
             {
@@ -240,8 +243,6 @@ namespace WindowsFormsApplication1
 
         private void languageSelection_TextChanged_1(object sender, EventArgs e)
         {
-            seleniumStrings.Items.Clear();
-            seleniumStrings.Text = "";
             if (languageSelection.Text != "Select a language")
             {
                 try
