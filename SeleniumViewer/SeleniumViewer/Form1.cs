@@ -270,11 +270,11 @@ namespace WindowsFormsApplication1
             Dictionary<string, int> defaultPositions = new Dictionary<string, int>()
             {
                 {"seleniumStrings", 13},
-                {"languageSelection", 573},
+                {"languageSelection", this.Width - languageSelection.Width - 30},
                 {"navigateButton", 12},
                 {"textBox1", 94},
                 {"webBrowser1", 12},
-                {"button1", 655 }
+                {"button1", this.Width - button1.Width - 30 }
             };
 
             Dictionary<string, int> secondaryPositions = new Dictionary<string, int>()
