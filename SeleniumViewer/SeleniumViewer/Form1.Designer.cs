@@ -79,6 +79,7 @@
             this.languageSelection.Name = "languageSelection";
             this.languageSelection.Size = new System.Drawing.Size(157, 21);
             this.languageSelection.TabIndex = 4;
+            this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged_1);
             // 
             // Form1
             // 
