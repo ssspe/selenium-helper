@@ -29,25 +29,25 @@ namespace WindowsFormsApplication1
         {
 
             // Set the view to show details.
-            listView1.View = View.Details;
+            seleniumList.View = View.Details;
             // Allow the user to edit item text.
-            listView1.LabelEdit = true;
-            listView1.LabelWrap = true;
+            seleniumList.LabelEdit = true;
+            //seleniumList.LabelWrap = true;
             // Allow the user to rearrange columns.
-            listView1.AllowColumnReorder = true;
+            seleniumList.AllowColumnReorder = true;
             // Select the item and subitems when selection is made.
-            listView1.FullRowSelect = true;
+            seleniumList.FullRowSelect = true;
 
             // Create columns for the items and subitems.
-            listView1.Columns.Add("Column 1", 0, HorizontalAlignment.Left);
-            listView1.Columns.Add(languageSelection.Text, 400, HorizontalAlignment.Left);
+            seleniumList.Columns.Add("Column 1", 0, HorizontalAlignment.Left);
+            seleniumList.Columns.Add(languageSelection.Text, 400, HorizontalAlignment.Left);
 
             foreach (var htmlString in htmlStrings)
             {
                 ListViewItem listItem1 = new ListViewItem("");
                 listItem1.SubItems.Add(new ListViewItem.ListViewSubItem(
                     listItem1, htmlString));
-                listView1.Items.Add(listItem1);
+                seleniumList.Items.Add(listItem1);
 
             }
 
@@ -56,12 +56,10 @@ namespace WindowsFormsApplication1
 
         public Form1()
         {
-            //var color = Color.FromArgb();
             InitializeComponent();
             webBrowser1.AllowNavigation = false;
             languageSelection.Items.AddRange( languages );
             richTextBox1.Location = new Point(this.Width + 2000, richTextBox1.Top);
-            //CreateMyListView();
         }
 
         private void navigate(object sender, EventArgs e)
@@ -152,8 +150,8 @@ namespace WindowsFormsApplication1
 
         private List<string> checkHtml(string html, List<string[]> outputList)
         {
-            listView1.Columns.Clear();
-            listView1.Items.Clear();
+            seleniumList.Columns.Clear();
+            seleniumList.Items.Clear();
             if (previousElement != null)
             {
                 previousElement.Style = previousStyle;
@@ -275,26 +273,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void languageSelection_TextChanged_1(object sender, EventArgs e)
-        {
-            if (languageSelection.Text != "Select a language")
-            {
-                try
-                {
-                    htmlStrings = checkHtml( fullDocumentHtml, processedHtml );
-
-                    if ( htmlStrings.Count > 0 )
-                    {
-                        CreateMyListView(htmlStrings);
-                    }
-                }
-                catch
-                {
-                    //nothing
-                }
-            }
-        }
-
         private int count = 0;
 
         private void textEditorButton_Click(object sender, EventArgs e)
@@ -306,7 +284,7 @@ namespace WindowsFormsApplication1
                 {"navigationBar", 94},
                 {"webBrowser1", 12},
                 {"textEditorButton", this.Width - textEditorButton.Width - 30 },
-                {"listView1", this.Width - listView1.Width - 30 },
+                {"seleniumList", this.Width - seleniumList.Width - 30 },
                 {"richTextBox1", this.Width  + 2000}
             };
 
@@ -317,7 +295,7 @@ namespace WindowsFormsApplication1
                 {"navigationBar", -navigationBar.Width - 194 - 2000},
                 {"webBrowser1", -webBrowser1.Width - 12- 2000},
                 {"textEditorButton", webBrowser1.Left },
-                {"listView1", webBrowser1.Left },
+                {"seleniumList", webBrowser1.Left },
                 {"richTextBox1", webBrowser1.Left + textEditorButton.Width + 15}
             };
 
@@ -325,16 +303,14 @@ namespace WindowsFormsApplication1
             {
                 {"languageSelection", AnchorStyles.Right | AnchorStyles.Bottom},
                 {"textEditorButton", AnchorStyles.Right | AnchorStyles.Top },
-                {"listView1", AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom },
-                //{"richTextBox1", AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right}
+                {"seleniumList", AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom },
             };
 
             Dictionary<string, AnchorStyles> secondaryAnchors = new Dictionary<string, AnchorStyles>()
             {
                 {"languageSelection", AnchorStyles.Left | AnchorStyles.Bottom},
                 {"textEditorButton", AnchorStyles.Left | AnchorStyles.Top },
-                {"listView1", AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom },
-                //{"richTextBox1", AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom }
+                {"seleniumList", AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom },
             };
 
             if ( count == 0 )
@@ -355,8 +331,7 @@ namespace WindowsFormsApplication1
         {
             languageSelection.Anchor = anchors["languageSelection"];
             textEditorButton.Anchor = anchors["textEditorButton"];
-            listView1.Anchor = anchors["listView1"];
-            //richTextBox1.Anchor = anchors["richTextBox1"];
+            seleniumList.Anchor = anchors["seleniumList"];
         }
 
         private void transitionViews(Dictionary<string, int> positions)
@@ -374,20 +349,40 @@ namespace WindowsFormsApplication1
             t.add(textEditorButton, "Left", positions["textEditorButton"]);
             t.add(textEditorButton, "Top", textEditorButton.Top);
 
-            t.add(listView1, "Left", positions["listView1"]);
-            t.add(listView1, "Top", listView1.Top);
+            t.add(seleniumList, "Left", positions["seleniumList"]);
+            t.add(seleniumList, "Top", seleniumList.Top);
 
             t.add(richTextBox1, "Left", positions["richTextBox1"]);
             t.add(richTextBox1, "Top", richTextBox1.Top);
             t.run();
         }
 
-        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void seleniumList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Point mousePos = listView1.PointToClient(Control.MousePosition);
-            ListViewHitTestInfo hitTest = listView1.HitTest(mousePos);
+            Point mousePos = seleniumList.PointToClient(Control.MousePosition);
+            ListViewHitTestInfo hitTest = seleniumList.HitTest(mousePos);
             int columnIndex = hitTest.Item.SubItems.IndexOf(hitTest.SubItem);
             richTextBox1.AppendText( hitTest.Item.SubItems[columnIndex].Text + Environment.NewLine);
+        }
+
+        private void languageSelection_TextChanged(object sender, EventArgs e)
+        {
+            if (languageSelection.Text != "Select a language")
+            {
+                try
+                {
+                    htmlStrings = checkHtml(fullDocumentHtml, processedHtml);
+
+                    if (htmlStrings.Count > 0)
+                    {
+                        CreateMyListView(htmlStrings);
+                    }
+                }
+                catch
+                {
+                    //nothing
+                }
+            }
         }
     }
 }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.languageSelection = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.navigationBar = new MetroFramework.Controls.MetroTextBox();
             this.textEditorButton = new MetroFramework.Controls.MetroButton();
+            this.languageSelection = new MetroFramework.Controls.MetroComboBox();
+            this.seleniumList = new MetroFramework.Controls.MetroListView();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -50,17 +50,6 @@
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
-            // languageSelection
-            // 
-            this.languageSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.languageSelection.FormattingEnabled = true;
-            this.languageSelection.Location = new System.Drawing.Point(573, 525);
-            this.languageSelection.Name = "languageSelection";
-            this.languageSelection.Size = new System.Drawing.Size(157, 21);
-            this.languageSelection.TabIndex = 4;
-            this.languageSelection.Text = "Select a Language";
-            this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged_1);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -71,18 +60,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(546, 483);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
-            // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Location = new System.Drawing.Point(573, 63);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(157, 450);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Tile;
-            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // metroButton1
             // 
@@ -102,6 +79,8 @@
             // 
             // navigationBar
             // 
+            this.navigationBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -133,6 +112,7 @@
             // 
             // textEditorButton
             // 
+            this.textEditorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textEditorButton.Location = new System.Drawing.Point(573, 25);
             this.textEditorButton.Name = "textEditorButton";
             this.textEditorButton.Size = new System.Drawing.Size(157, 23);
@@ -141,16 +121,41 @@
             this.textEditorButton.UseSelectable = true;
             this.textEditorButton.Click += new System.EventHandler(this.textEditorButton_Click);
             // 
+            // languageSelection
+            // 
+            this.languageSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.languageSelection.FormattingEnabled = true;
+            this.languageSelection.ItemHeight = 23;
+            this.languageSelection.Location = new System.Drawing.Point(573, 517);
+            this.languageSelection.Name = "languageSelection";
+            this.languageSelection.Size = new System.Drawing.Size(157, 29);
+            this.languageSelection.TabIndex = 10;
+            this.languageSelection.UseSelectable = true;
+            this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged);
+            // 
+            // seleniumList
+            // 
+            this.seleniumList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.seleniumList.FullRowSelect = true;
+            this.seleniumList.Location = new System.Drawing.Point(573, 63);
+            this.seleniumList.Name = "seleniumList";
+            this.seleniumList.OwnerDraw = true;
+            this.seleniumList.Size = new System.Drawing.Size(157, 439);
+            this.seleniumList.TabIndex = 11;
+            this.seleniumList.UseCompatibleStateImageBehavior = false;
+            this.seleniumList.UseSelectable = true;
+            this.seleniumList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.seleniumList_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 556);
+            this.Controls.Add(this.seleniumList);
+            this.Controls.Add(this.languageSelection);
             this.Controls.Add(this.textEditorButton);
             this.Controls.Add(this.navigationBar);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.languageSelection);
             this.Controls.Add(this.webBrowser1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -161,13 +166,13 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.ComboBox languageSelection;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.ListView listView1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroTextBox navigationBar;
         private MetroFramework.Controls.MetroButton textEditorButton;
+        private MetroFramework.Controls.MetroComboBox languageSelection;
+        private MetroFramework.Controls.MetroListView seleniumList;
     }
 }
 
