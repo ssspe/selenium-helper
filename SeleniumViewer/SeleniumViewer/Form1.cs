@@ -64,10 +64,10 @@ namespace WindowsFormsApplication1
             //CreateMyListView();
         }
 
-        private void navigateButton_Click(object sender, EventArgs e)
+        private void navigate(object sender, EventArgs e)
         {
             webBrowser1.AllowNavigation = true;
-            string val = textBox1.Text;
+            string val = navigationBar.Text;
             //Uri val = new Uri( "file:///C:\\Users\\Spencer.Robertson\\Desktop\\test.html" );  
             webBrowser1.Navigate( val );
         }
@@ -267,11 +267,11 @@ namespace WindowsFormsApplication1
             return actualOutput;
         }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        private void navigationBar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                navigateButton_Click(this, new EventArgs());
+                navigate(this, new EventArgs());
             }
         }
 
@@ -297,34 +297,34 @@ namespace WindowsFormsApplication1
 
         private int count = 0;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textEditorButton_Click(object sender, EventArgs e)
         {
             Dictionary<string, int> defaultPositions = new Dictionary<string, int>()
             {
                 {"languageSelection", this.Width - languageSelection.Width - 30},
                 {"navigateButton", 12},
-                {"textBox1", 94},
+                {"navigationBar", 94},
                 {"webBrowser1", 12},
-                {"button1", this.Width - button1.Width - 30 },
+                {"textEditorButton", this.Width - textEditorButton.Width - 30 },
                 {"listView1", this.Width - listView1.Width - 30 },
                 {"richTextBox1", this.Width  + 2000}
             };
 
             Dictionary<string, int> secondaryPositions = new Dictionary<string, int>()
             {
-                {"languageSelection", navigateButton.Left},
-                {"navigateButton", -navigateButton.Width - 12- 2000},
-                {"textBox1", -textBox1.Width - 194 - 2000},
+                {"languageSelection", webBrowser1.Left},
+                {"navigateButton", -webBrowser1.Width - 12- 2000},
+                {"navigationBar", -navigationBar.Width - 194 - 2000},
                 {"webBrowser1", -webBrowser1.Width - 12- 2000},
-                {"button1", navigateButton.Left },
-                {"listView1", navigateButton.Left },
-                {"richTextBox1", navigateButton.Left + button1.Width + 15}
+                {"textEditorButton", webBrowser1.Left },
+                {"listView1", webBrowser1.Left },
+                {"richTextBox1", webBrowser1.Left + textEditorButton.Width + 15}
             };
 
             Dictionary<string, AnchorStyles> defaultAnchors = new Dictionary<string, AnchorStyles>()
             {
                 {"languageSelection", AnchorStyles.Right | AnchorStyles.Bottom},
-                {"button1", AnchorStyles.Right | AnchorStyles.Top },
+                {"textEditorButton", AnchorStyles.Right | AnchorStyles.Top },
                 {"listView1", AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom },
                 //{"richTextBox1", AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right}
             };
@@ -332,7 +332,7 @@ namespace WindowsFormsApplication1
             Dictionary<string, AnchorStyles> secondaryAnchors = new Dictionary<string, AnchorStyles>()
             {
                 {"languageSelection", AnchorStyles.Left | AnchorStyles.Bottom},
-                {"button1", AnchorStyles.Left | AnchorStyles.Top },
+                {"textEditorButton", AnchorStyles.Left | AnchorStyles.Top },
                 {"listView1", AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom },
                 //{"richTextBox1", AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom }
             };
@@ -354,7 +354,7 @@ namespace WindowsFormsApplication1
         private void setAnchors( Dictionary<string, AnchorStyles> anchors)
         {
             languageSelection.Anchor = anchors["languageSelection"];
-            button1.Anchor = anchors["button1"];
+            textEditorButton.Anchor = anchors["textEditorButton"];
             listView1.Anchor = anchors["listView1"];
             //richTextBox1.Anchor = anchors["richTextBox1"];
         }
@@ -365,17 +365,14 @@ namespace WindowsFormsApplication1
             t.add(languageSelection, "Left", positions["languageSelection"]);
             t.add(languageSelection, "Top", languageSelection.Top);
 
-            t.add(navigateButton, "Left", positions["navigateButton"]);
-            t.add(navigateButton, "Top", navigateButton.Top);
-
-            t.add(textBox1, "Left", positions["textBox1"]);
-            t.add(textBox1, "Top", textBox1.Top);
+            t.add(navigationBar, "Left", positions["navigationBar"]);
+            t.add(navigationBar, "Top", navigationBar.Top);
 
             t.add(webBrowser1, "Left", positions["webBrowser1"]);
             t.add(webBrowser1, "Top", webBrowser1.Top);
 
-            t.add(button1, "Left", positions["button1"]);
-            t.add(button1, "Top", button1.Top);
+            t.add(textEditorButton, "Left", positions["textEditorButton"]);
+            t.add(textEditorButton, "Top", textEditorButton.Top);
 
             t.add(listView1, "Left", positions["listView1"]);
             t.add(listView1, "Top", listView1.Top);
