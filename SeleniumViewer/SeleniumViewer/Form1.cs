@@ -14,18 +14,6 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        [DllImport("user32.dll")]
-
-        static public extern bool ShowScrollBar(System.IntPtr hWnd, int wBar, bool bShow);
-
-        private const uint SB_HORZ = 0;
-
-        private const uint SB_VERT = 1;
-
-        private const uint ESB_DISABLE_BOTH = 0x3;
-
-        private const uint ESB_ENABLE_BOTH = 0x0;
-
         HtmlElement currentElement;
         HtmlElement previousElement;
         HtmlDocument thisdoc;
@@ -36,6 +24,35 @@ namespace WindowsFormsApplication1
         private List<string> htmlStrings;
         private string fullDocumentHtml;
 
+        private void CreateMyListView(List<string> htmlStrings)
+        {
+
+            // Set the view to show details.
+            listView1.View = View.Details;
+            // Allow the user to edit item text.
+            listView1.LabelEdit = true;
+            listView1.LabelWrap = true;
+            // Allow the user to rearrange columns.
+            listView1.AllowColumnReorder = true;
+            // Select the item and subitems when selection is made.
+            listView1.FullRowSelect = true;
+
+            // Create columns for the items and subitems.
+            listView1.Columns.Add("Column 1", 0, HorizontalAlignment.Left);
+            listView1.Columns.Add(languageSelection.Text, 400, HorizontalAlignment.Left);
+
+            foreach (var htmlString in htmlStrings)
+            {
+                ListViewItem listItem1 = new ListViewItem("");
+                listItem1.SubItems.Add(new ListViewItem.ListViewSubItem(
+                    listItem1, htmlString));
+                listView1.Items.Add(listItem1);
+
+            }
+
+
+        }
+
         public Form1()
         {
             //var color = Color.FromArgb();
@@ -43,7 +60,7 @@ namespace WindowsFormsApplication1
             webBrowser1.AllowNavigation = false;
             languageSelection.Items.AddRange( languages );
             richTextBox1.Location = new Point(this.Width + 2000, richTextBox1.Top);
-
+            //CreateMyListView();
         }
 
         private void navigateButton_Click(object sender, EventArgs e)
@@ -94,17 +111,11 @@ namespace WindowsFormsApplication1
 
             if ( languageSelection.Text != "Select a language" )
             {
-                htmlStrings = checkHtml( fullDocumentHtml, processedHtml, currentElement );
+                htmlStrings = checkHtml( fullDocumentHtml, processedHtml );
 
                 if ( htmlStrings.Count > 0 )
                 {
-                    foreach (var htmlString in htmlStrings)
-                    {
-                        listView1.Items.Add(new ListViewItem(htmlString));
-                        this.listView1.Scrollable = false;
-
-                        ShowScrollBar(this.listView1.Handle, (int)SB_VERT, true);
-                    }
+                    CreateMyListView(htmlStrings);
                 }
             }
 
@@ -138,8 +149,9 @@ namespace WindowsFormsApplication1
             return outputList;
         }
 
-        private List<string> checkHtml(string html, List<string[]> outputList, HtmlElement element)
+        private List<string> checkHtml(string html, List<string[]> outputList)
         {
+            listView1.Columns.Clear();
             listView1.Items.Clear();
             if (previousElement != null)
             {
@@ -268,17 +280,11 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
-                    htmlStrings = checkHtml( fullDocumentHtml, processedHtml, currentElement );
+                    htmlStrings = checkHtml( fullDocumentHtml, processedHtml );
 
                     if ( htmlStrings.Count > 0 )
                     {
-                        foreach ( var htmlString in htmlStrings)
-                        {
-                            listView1.Items.Add( new ListViewItem(htmlString) );
-                            this.listView1.Scrollable = false;
-
-                            ShowScrollBar(this.listView1.Handle, (int)SB_VERT, true);
-                        }
+                        CreateMyListView(htmlStrings);
                     }
                 }
                 catch
@@ -380,15 +386,10 @@ namespace WindowsFormsApplication1
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listView1.SelectedItems.Count == 1)
-            {
-                ListView.SelectedListViewItemCollection items = listView1.SelectedItems;
-
-                ListViewItem lvItem = items[0];
-                string what = lvItem.Text;
-                richTextBox1.AppendText(what + Environment.NewLine);
-
-            }
+            Point mousePos = listView1.PointToClient(Control.MousePosition);
+            ListViewHitTestInfo hitTest = listView1.HitTest(mousePos);
+            int columnIndex = hitTest.Item.SubItems.IndexOf(hitTest.SubItem);
+            richTextBox1.AppendText( hitTest.Item.SubItems[columnIndex].Text + Environment.NewLine);
         }
     }
 }
