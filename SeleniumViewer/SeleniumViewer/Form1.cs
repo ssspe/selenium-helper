@@ -377,5 +377,18 @@ namespace WindowsFormsApplication1
             t.add(richTextBox1, "Top", richTextBox1.Top);
             t.run();
         }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                ListView.SelectedListViewItemCollection items = listView1.SelectedItems;
+
+                ListViewItem lvItem = items[0];
+                string what = lvItem.Text;
+                richTextBox1.AppendText(what + Environment.NewLine);
+
+            }
+        }
     }
 }
