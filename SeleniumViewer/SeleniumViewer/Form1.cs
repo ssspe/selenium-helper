@@ -7,12 +7,13 @@ using System.Threading;
 using System.Windows.Forms;
 
 using HtmlAgilityPack;
+using MetroFramework.Forms;
 using Transitions;
 using HtmlDocument = System.Windows.Forms.HtmlDocument;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroForm
     {
         HtmlElement currentElement;
         HtmlElement previousElement;

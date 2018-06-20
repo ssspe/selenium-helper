@@ -12,3 +12,5 @@ C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\Sel
 C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\obj\Debug\SeleniumViewer.csproj.GenerateResource.Cache
 C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\Transitions.dll
 C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\Transitions.pdb
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\MetroFramework.Design.dll
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\MetroFramework.Fonts.dll
