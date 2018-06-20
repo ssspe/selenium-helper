@@ -31,9 +31,10 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.navigateButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.seleniumStrings = new System.Windows.Forms.ComboBox();
             this.languageSelection = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -44,7 +45,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(12, 41);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(718, 477);
+            this.webBrowser1.Size = new System.Drawing.Size(546, 505);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
@@ -64,19 +65,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(94, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(524, 20);
+            this.textBox1.Size = new System.Drawing.Size(464, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            // 
-            // seleniumStrings
-            // 
-            this.seleniumStrings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.seleniumStrings.FormattingEnabled = true;
-            this.seleniumStrings.Location = new System.Drawing.Point(13, 525);
-            this.seleniumStrings.Name = "seleniumStrings";
-            this.seleniumStrings.Size = new System.Drawing.Size(545, 21);
-            this.seleniumStrings.TabIndex = 3;
             // 
             // languageSelection
             // 
@@ -86,27 +77,51 @@
             this.languageSelection.Name = "languageSelection";
             this.languageSelection.Size = new System.Drawing.Size(157, 21);
             this.languageSelection.TabIndex = 4;
+            this.languageSelection.Text = "Select a Language";
             this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged_1);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(655, 10);
+            this.button1.Location = new System.Drawing.Point(573, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(157, 23);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.button1.Text = "Text Editor";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Location = new System.Drawing.Point(573, 41);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(157, 472);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Tile;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.Location = new System.Drawing.Point(12, 41);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(546, 505);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 556);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.languageSelection);
-            this.Controls.Add(this.seleniumStrings);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.navigateButton);
             this.Controls.Add(this.webBrowser1);
@@ -122,9 +137,10 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button navigateButton;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox seleniumStrings;
         private System.Windows.Forms.ComboBox languageSelection;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
