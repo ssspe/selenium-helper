@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -13,6 +14,18 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll")]
+
+        static public extern bool ShowScrollBar(System.IntPtr hWnd, int wBar, bool bShow);
+
+        private const uint SB_HORZ = 0;
+
+        private const uint SB_VERT = 1;
+
+        private const uint ESB_DISABLE_BOTH = 0x3;
+
+        private const uint ESB_ENABLE_BOTH = 0x0;
+
         HtmlElement currentElement;
         HtmlElement previousElement;
         HtmlDocument thisdoc;
@@ -22,12 +35,15 @@ namespace WindowsFormsApplication1
         private List<string[]> processedHtml;
         private List<string> htmlStrings;
         private string fullDocumentHtml;
+
         public Form1()
         {
             //var color = Color.FromArgb();
             InitializeComponent();
             webBrowser1.AllowNavigation = false;
             languageSelection.Items.AddRange( languages );
+            richTextBox1.Location = new Point(this.Width + 2000, richTextBox1.Top);
+
         }
 
         private void navigateButton_Click(object sender, EventArgs e)
@@ -82,8 +98,13 @@ namespace WindowsFormsApplication1
 
                 if ( htmlStrings.Count > 0 )
                 {
-                    seleniumStrings.Text = htmlStrings.First();
-                    seleniumStrings.Items.AddRange( htmlStrings.Skip( 1 ).ToArray() );
+                    foreach (var htmlString in htmlStrings)
+                    {
+                        listView1.Items.Add(new ListViewItem(htmlString));
+                        this.listView1.Scrollable = false;
+
+                        ShowScrollBar(this.listView1.Handle, (int)SB_VERT, true);
+                    }
                 }
             }
 
@@ -119,8 +140,7 @@ namespace WindowsFormsApplication1
 
         private List<string> checkHtml(string html, List<string[]> outputList, HtmlElement element)
         {
-            seleniumStrings.Items.Clear();
-            seleniumStrings.Text = "";
+            listView1.Items.Clear();
             if (previousElement != null)
             {
                 previousElement.Style = previousStyle;
@@ -252,8 +272,13 @@ namespace WindowsFormsApplication1
 
                     if ( htmlStrings.Count > 0 )
                     {
-                        seleniumStrings.Text = htmlStrings.First();
-                        seleniumStrings.Items.AddRange( htmlStrings.Skip( 1 ).ToArray() );
+                        foreach ( var htmlString in htmlStrings)
+                        {
+                            listView1.Items.Add( new ListViewItem(htmlString) );
+                            this.listView1.Scrollable = false;
+
+                            ShowScrollBar(this.listView1.Handle, (int)SB_VERT, true);
+                        }
                     }
                 }
                 catch
@@ -269,42 +294,67 @@ namespace WindowsFormsApplication1
         {
             Dictionary<string, int> defaultPositions = new Dictionary<string, int>()
             {
-                {"seleniumStrings", 13},
                 {"languageSelection", this.Width - languageSelection.Width - 30},
                 {"navigateButton", 12},
                 {"textBox1", 94},
                 {"webBrowser1", 12},
-                {"button1", this.Width - button1.Width - 30 }
+                {"button1", this.Width - button1.Width - 30 },
+                {"listView1", this.Width - listView1.Width - 30 },
+                {"richTextBox1", this.Width  + 2000}
             };
 
             Dictionary<string, int> secondaryPositions = new Dictionary<string, int>()
             {
-                {"seleniumStrings", -seleniumStrings.Width - 13},
-                {"languageSelection", -languageSelection.Width - 573},
-                {"navigateButton", -navigateButton.Width - 12},
-                {"textBox1", -textBox1.Width - 194},
-                {"webBrowser1", -webBrowser1.Width - 12},
-                {"button1", navigateButton.Left }
+                {"languageSelection", navigateButton.Left},
+                {"navigateButton", -navigateButton.Width - 12- 2000},
+                {"textBox1", -textBox1.Width - 194 - 2000},
+                {"webBrowser1", -webBrowser1.Width - 12- 2000},
+                {"button1", navigateButton.Left },
+                {"listView1", navigateButton.Left },
+                {"richTextBox1", navigateButton.Left + button1.Width + 15}
+            };
+
+            Dictionary<string, AnchorStyles> defaultAnchors = new Dictionary<string, AnchorStyles>()
+            {
+                {"languageSelection", AnchorStyles.Right | AnchorStyles.Bottom},
+                {"button1", AnchorStyles.Right | AnchorStyles.Top },
+                {"listView1", AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom },
+                //{"richTextBox1", AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right}
+            };
+
+            Dictionary<string, AnchorStyles> secondaryAnchors = new Dictionary<string, AnchorStyles>()
+            {
+                {"languageSelection", AnchorStyles.Left | AnchorStyles.Bottom},
+                {"button1", AnchorStyles.Left | AnchorStyles.Top },
+                {"listView1", AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom },
+                //{"richTextBox1", AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom }
             };
 
             if ( count == 0 )
             {
                 transitionViews( secondaryPositions );
                 count = 1;
+                setAnchors(secondaryAnchors);
             }
             else
             {
                 transitionViews(defaultPositions);
                 count = 0;
+                setAnchors(defaultAnchors);
             }
+        }
+
+        private void setAnchors( Dictionary<string, AnchorStyles> anchors)
+        {
+            languageSelection.Anchor = anchors["languageSelection"];
+            button1.Anchor = anchors["button1"];
+            listView1.Anchor = anchors["listView1"];
+            //richTextBox1.Anchor = anchors["richTextBox1"];
         }
 
         private void transitionViews(Dictionary<string, int> positions)
         {
             var t = new Transition(new TransitionType_EaseInEaseOut(500));
-            t.add(seleniumStrings, "Left", positions["seleniumStrings"]);
-            t.add(seleniumStrings, "Top", seleniumStrings.Top);
-
             t.add(languageSelection, "Left", positions["languageSelection"]);
             t.add(languageSelection, "Top", languageSelection.Top);
 
@@ -319,6 +369,12 @@ namespace WindowsFormsApplication1
 
             t.add(button1, "Left", positions["button1"]);
             t.add(button1, "Top", button1.Top);
+
+            t.add(listView1, "Left", positions["listView1"]);
+            t.add(listView1, "Top", listView1.Top);
+
+            t.add(richTextBox1, "Left", positions["richTextBox1"]);
+            t.add(richTextBox1, "Top", richTextBox1.Top);
             t.run();
         }
     }
