@@ -33,3 +33,4 @@ Y:\selenium-viewer\SeleniumViewer\SeleniumViewer\bin\Debug\HtmlAgilityPack.pdb
 Y:\selenium-viewer\SeleniumViewer\SeleniumViewer\bin\Debug\HtmlAgilityPack.xml
 Y:\selenium-viewer\SeleniumViewer\SeleniumViewer\bin\Debug\Transitions.pdb
 Y:\selenium-viewer\SeleniumViewer\SeleniumViewer\obj\Debug\SeleniumViewer.csproj.CopyComplete
+C:\Users\Spencer.Robertson\Documents\Projects\selenium-helper\SeleniumViewer\SeleniumViewer\bin\Debug\MetroFramework.dll

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -39,16 +40,12 @@ namespace WindowsFormsApplication1
             seleniumList.FullRowSelect = true;
 
             // Create columns for the items and subitems.
-            seleniumList.Columns.Add("Column 1", 0, HorizontalAlignment.Left);
-            seleniumList.Columns.Add(languageSelection.Text, 400, HorizontalAlignment.Left);
+            seleniumList.Columns.Add(languageSelection.Text, 300, HorizontalAlignment.Left);
 
             foreach (var htmlString in htmlStrings)
             {
-                ListViewItem listItem1 = new ListViewItem("");
-                listItem1.SubItems.Add(new ListViewItem.ListViewSubItem(
-                    listItem1, htmlString));
+                ListViewItem listItem1 = new ListViewItem(htmlString);
                 seleniumList.Items.Add(listItem1);
-
             }
 
 
@@ -274,14 +271,13 @@ namespace WindowsFormsApplication1
         }
 
         private int count = 0;
-
+        private bool setLength = true;
         private void textEditorButton_Click(object sender, EventArgs e)
         {
             Dictionary<string, int> defaultPositions = new Dictionary<string, int>()
             {
                 {"languageSelection", this.Width - languageSelection.Width - 30},
-                {"navigateButton", 12},
-                {"navigationBar", 94},
+                {"navigationBar", 12},
                 {"webBrowser1", 12},
                 {"textEditorButton", this.Width - textEditorButton.Width - 30 },
                 {"seleniumList", this.Width - seleniumList.Width - 30 },
@@ -291,7 +287,6 @@ namespace WindowsFormsApplication1
             Dictionary<string, int> secondaryPositions = new Dictionary<string, int>()
             {
                 {"languageSelection", webBrowser1.Left},
-                {"navigateButton", -webBrowser1.Width - 12- 2000},
                 {"navigationBar", -navigationBar.Width - 194 - 2000},
                 {"webBrowser1", -webBrowser1.Width - 12- 2000},
                 {"textEditorButton", webBrowser1.Left },
@@ -324,6 +319,12 @@ namespace WindowsFormsApplication1
                 transitionViews(defaultPositions);
                 count = 0;
                 setAnchors(defaultAnchors);
+                if ( setLength )
+                {
+                    navigationBar.Width = navigationBar.Width - 20;
+                    webBrowser1.Width = webBrowser1.Width - 20;
+                }
+                setLength = false;
             }
         }
 

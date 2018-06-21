@@ -57,7 +57,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 63);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(546, 483);
+            this.richTextBox1.Size = new System.Drawing.Size(532, 483);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
@@ -94,7 +94,7 @@
             this.navigationBar.CustomButton.UseSelectable = true;
             this.navigationBar.CustomButton.Visible = false;
             this.navigationBar.Lines = new string[0];
-            this.navigationBar.Location = new System.Drawing.Point(120, 25);
+            this.navigationBar.Location = new System.Drawing.Point(12, 25);
             this.navigationBar.MaxLength = 32767;
             this.navigationBar.Name = "navigationBar";
             this.navigationBar.PasswordChar = '\0';
@@ -103,7 +103,7 @@
             this.navigationBar.SelectionLength = 0;
             this.navigationBar.SelectionStart = 0;
             this.navigationBar.ShortcutsEnabled = true;
-            this.navigationBar.Size = new System.Drawing.Size(438, 23);
+            this.navigationBar.Size = new System.Drawing.Size(546, 23);
             this.navigationBar.TabIndex = 8;
             this.navigationBar.UseSelectable = true;
             this.navigationBar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -135,6 +135,8 @@
             // 
             // seleniumList
             // 
+            this.seleniumList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.seleniumList.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.seleniumList.FullRowSelect = true;
             this.seleniumList.Location = new System.Drawing.Point(573, 63);
@@ -158,7 +160,6 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.webBrowser1);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
