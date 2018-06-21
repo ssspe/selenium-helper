@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.navigateButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.languageSelection = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.navigationBar = new MetroFramework.Controls.MetroTextBox();
+            this.textEditorButton = new MetroFramework.Controls.MetroButton();
+            this.languageSelection = new MetroFramework.Controls.MetroComboBox();
+            this.seleniumList = new MetroFramework.Controls.MetroListView();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -42,106 +43,136 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(12, 41);
+            this.webBrowser1.Location = new System.Drawing.Point(12, 84);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(546, 505);
+            this.webBrowser1.Size = new System.Drawing.Size(546, 462);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
-            // 
-            // navigateButton
-            // 
-            this.navigateButton.Location = new System.Drawing.Point(12, 12);
-            this.navigateButton.Name = "navigateButton";
-            this.navigateButton.Size = new System.Drawing.Size(75, 23);
-            this.navigateButton.TabIndex = 1;
-            this.navigateButton.Text = "Navigate";
-            this.navigateButton.UseVisualStyleBackColor = true;
-            this.navigateButton.Click += new System.EventHandler(this.navigateButton_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(94, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(464, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            // 
-            // languageSelection
-            // 
-            this.languageSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.languageSelection.FormattingEnabled = true;
-            this.languageSelection.Location = new System.Drawing.Point(573, 525);
-            this.languageSelection.Name = "languageSelection";
-            this.languageSelection.Size = new System.Drawing.Size(157, 21);
-            this.languageSelection.TabIndex = 4;
-            this.languageSelection.Text = "Select a Language";
-            this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged_1);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(573, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Text Editor";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Location = new System.Drawing.Point(573, 41);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(157, 472);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Tile;
-            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(12, 41);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 63);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(546, 505);
+            this.richTextBox1.Size = new System.Drawing.Size(546, 483);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(0, 0);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 0;
+            this.metroButton1.UseSelectable = true;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(0, 0);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(75, 23);
+            this.metroButton2.TabIndex = 0;
+            this.metroButton2.UseSelectable = true;
+            // 
+            // navigationBar
+            // 
+            this.navigationBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.navigationBar.CustomButton.Image = null;
+            this.navigationBar.CustomButton.Location = new System.Drawing.Point(416, 1);
+            this.navigationBar.CustomButton.Name = "";
+            this.navigationBar.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.navigationBar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.navigationBar.CustomButton.TabIndex = 1;
+            this.navigationBar.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.navigationBar.CustomButton.UseSelectable = true;
+            this.navigationBar.CustomButton.Visible = false;
+            this.navigationBar.Lines = new string[0];
+            this.navigationBar.Location = new System.Drawing.Point(120, 25);
+            this.navigationBar.MaxLength = 32767;
+            this.navigationBar.Name = "navigationBar";
+            this.navigationBar.PasswordChar = '\0';
+            this.navigationBar.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.navigationBar.SelectedText = "";
+            this.navigationBar.SelectionLength = 0;
+            this.navigationBar.SelectionStart = 0;
+            this.navigationBar.ShortcutsEnabled = true;
+            this.navigationBar.Size = new System.Drawing.Size(438, 23);
+            this.navigationBar.TabIndex = 8;
+            this.navigationBar.UseSelectable = true;
+            this.navigationBar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.navigationBar.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.navigationBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.navigationBar_KeyDown);
+            // 
+            // textEditorButton
+            // 
+            this.textEditorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditorButton.Location = new System.Drawing.Point(573, 25);
+            this.textEditorButton.Name = "textEditorButton";
+            this.textEditorButton.Size = new System.Drawing.Size(157, 23);
+            this.textEditorButton.TabIndex = 9;
+            this.textEditorButton.Text = "Text Editor";
+            this.textEditorButton.UseSelectable = true;
+            this.textEditorButton.Click += new System.EventHandler(this.textEditorButton_Click);
+            // 
+            // languageSelection
+            // 
+            this.languageSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.languageSelection.FormattingEnabled = true;
+            this.languageSelection.ItemHeight = 23;
+            this.languageSelection.Location = new System.Drawing.Point(573, 517);
+            this.languageSelection.Name = "languageSelection";
+            this.languageSelection.Size = new System.Drawing.Size(157, 29);
+            this.languageSelection.TabIndex = 10;
+            this.languageSelection.UseSelectable = true;
+            this.languageSelection.TextChanged += new System.EventHandler(this.languageSelection_TextChanged);
+            // 
+            // seleniumList
+            // 
+            this.seleniumList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.seleniumList.FullRowSelect = true;
+            this.seleniumList.Location = new System.Drawing.Point(573, 63);
+            this.seleniumList.Name = "seleniumList";
+            this.seleniumList.OwnerDraw = true;
+            this.seleniumList.Size = new System.Drawing.Size(157, 439);
+            this.seleniumList.TabIndex = 11;
+            this.seleniumList.UseCompatibleStateImageBehavior = false;
+            this.seleniumList.UseSelectable = true;
+            this.seleniumList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.seleniumList_MouseDoubleClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 556);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.seleniumList);
             this.Controls.Add(this.languageSelection);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.navigateButton);
+            this.Controls.Add(this.textEditorButton);
+            this.Controls.Add(this.navigationBar);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.webBrowser1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Button navigateButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox languageSelection;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroTextBox navigationBar;
+        private MetroFramework.Controls.MetroButton textEditorButton;
+        private MetroFramework.Controls.MetroComboBox languageSelection;
+        private MetroFramework.Controls.MetroListView seleniumList;
     }
 }
 
