@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
@@ -36,6 +37,8 @@
             this.textEditorButton = new MetroFramework.Controls.MetroButton();
             this.languageSelection = new MetroFramework.Controls.MetroComboBox();
             this.seleniumList = new MetroFramework.Controls.MetroListView();
+            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.navigateToggle = new MetroFramework.Controls.MetroToggle();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -85,7 +88,7 @@
             // 
             // 
             this.navigationBar.CustomButton.Image = null;
-            this.navigationBar.CustomButton.Location = new System.Drawing.Point(416, 1);
+            this.navigationBar.CustomButton.Location = new System.Drawing.Point(459, 1);
             this.navigationBar.CustomButton.Name = "";
             this.navigationBar.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.navigationBar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -94,7 +97,7 @@
             this.navigationBar.CustomButton.UseSelectable = true;
             this.navigationBar.CustomButton.Visible = false;
             this.navigationBar.Lines = new string[0];
-            this.navigationBar.Location = new System.Drawing.Point(12, 25);
+            this.navigationBar.Location = new System.Drawing.Point(109, 25);
             this.navigationBar.MaxLength = 32767;
             this.navigationBar.Name = "navigationBar";
             this.navigationBar.PasswordChar = '\0';
@@ -103,7 +106,7 @@
             this.navigationBar.SelectionLength = 0;
             this.navigationBar.SelectionStart = 0;
             this.navigationBar.ShortcutsEnabled = true;
-            this.navigationBar.Size = new System.Drawing.Size(578, 23);
+            this.navigationBar.Size = new System.Drawing.Size(481, 23);
             this.navigationBar.TabIndex = 8;
             this.navigationBar.UseSelectable = true;
             this.navigationBar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -148,18 +151,34 @@
             this.seleniumList.UseSelectable = true;
             this.seleniumList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.seleniumList_MouseDoubleClick);
             // 
+            // metroContextMenu1
+            // 
+            this.metroContextMenu1.Name = "metroContextMenu1";
+            this.metroContextMenu1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // navigateToggle
+            // 
+            this.navigateToggle.Location = new System.Drawing.Point(12, 25);
+            this.navigateToggle.Name = "navigateToggle";
+            this.navigateToggle.Size = new System.Drawing.Size(80, 23);
+            this.navigateToggle.TabIndex = 13;
+            this.navigateToggle.Text = "Off";
+            this.navigateToggle.UseSelectable = true;
+            this.navigateToggle.CheckedChanged += new System.EventHandler(this.metroToggle1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 556);
-            this.MinimumSize = new System.Drawing.Size(809, 556);
+            this.Controls.Add(this.navigateToggle);
             this.Controls.Add(this.seleniumList);
             this.Controls.Add(this.languageSelection);
             this.Controls.Add(this.textEditorButton);
             this.Controls.Add(this.navigationBar);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.webBrowser1);
+            this.MinimumSize = new System.Drawing.Size(809, 556);
             this.Name = "Form1";
             this.ResumeLayout(false);
 
@@ -175,6 +194,8 @@
         private MetroFramework.Controls.MetroButton textEditorButton;
         private MetroFramework.Controls.MetroComboBox languageSelection;
         private MetroFramework.Controls.MetroListView seleniumList;
+        private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
+        private MetroFramework.Controls.MetroToggle navigateToggle;
     }
 }
 

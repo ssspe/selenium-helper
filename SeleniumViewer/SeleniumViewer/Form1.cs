@@ -54,14 +54,12 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
-            webBrowser1.AllowNavigation = false;
             languageSelection.Items.AddRange( languages );
             richTextBox1.Location = new Point(this.Width + 2000, richTextBox1.Top);
         }
 
         private void navigate(object sender, EventArgs e)
         {
-            webBrowser1.AllowNavigation = true;
             string val = navigationBar.Text;
             //Uri val = new Uri( "file:///C:\\Users\\Spencer.Robertson\\Desktop\\test.html" );  
             webBrowser1.Navigate( val );
@@ -91,8 +89,6 @@ namespace WindowsFormsApplication1
             {
                 previousElement.Style = previousStyle;
             }
-
-            webBrowser1.AllowNavigation = false;
             
             HtmlElement currentElement = webBrowser1.Document.GetElementFromPoint(e.ClientMousePosition);
 
@@ -277,11 +273,12 @@ namespace WindowsFormsApplication1
             Dictionary<string, int> defaultPositions = new Dictionary<string, int>()
             {
                 {"languageSelection", this.Width - languageSelection.Width - 30},
-                {"navigationBar", 12},
+                {"navigationBar", 24 + navigateToggle.Width},
                 {"webBrowser1", 12},
                 {"textEditorButton", this.Width - textEditorButton.Width - 30 },
                 {"seleniumList", this.Width - seleniumList.Width - 30 },
-                {"richTextBox1", this.Width  + 2000}
+                {"richTextBox1", this.Width  + 2000},
+                {"navigateToggle", 12}
             };
 
             Dictionary<string, int> secondaryPositions = new Dictionary<string, int>()
@@ -291,7 +288,8 @@ namespace WindowsFormsApplication1
                 {"webBrowser1", -webBrowser1.Width - 12- 2000},
                 {"textEditorButton", webBrowser1.Left },
                 {"seleniumList", webBrowser1.Left },
-                {"richTextBox1", webBrowser1.Left + textEditorButton.Width + 15}
+                {"richTextBox1", webBrowser1.Left + textEditorButton.Width + 15},
+                {"navigateToggle", -navigateToggle.Width - 12- 2000}
             };
 
             Dictionary<string, AnchorStyles> defaultAnchors = new Dictionary<string, AnchorStyles>()
@@ -355,6 +353,9 @@ namespace WindowsFormsApplication1
 
             t.add(richTextBox1, "Left", positions["richTextBox1"]);
             t.add(richTextBox1, "Top", richTextBox1.Top);
+
+            t.add(navigateToggle, "Left", positions["navigateToggle"]);
+            t.add(navigateToggle, "Top", navigateToggle.Top);
             t.run();
         }
 
@@ -384,6 +385,12 @@ namespace WindowsFormsApplication1
                     //nothing
                 }
             }
+        }
+
+        private void metroToggle1_CheckedChanged(object sender, EventArgs e)
+        {
+            navigationBar.Visible = !navigationBar.Visible;
+            webBrowser1.AllowNavigation = !webBrowser1.AllowNavigation;
         }
     }
 }
