@@ -67,6 +67,7 @@ namespace WindowsFormsApplication1
 
         private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
+            navigateToggle.Checked = true;
             thisdoc = webBrowser1.Document;
             thisdoc.MouseOver += thisDoc_MouseDown;
             thisdoc.MouseDown += SelectDoc;
