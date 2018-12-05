@@ -5,4 +5,4 @@
 ## Getting Started
 
 [license-image]: http://img.shields.io/npm/l/react-dates.svg
-[license-url]: LICENSE
+[license-url]: https://github.com/ssspe/selenium-viewer/blob/master/LICENSE
